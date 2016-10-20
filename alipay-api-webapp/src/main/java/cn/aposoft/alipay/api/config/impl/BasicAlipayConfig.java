@@ -45,4 +45,10 @@ public class BasicAlipayConfig implements AlipayConfig {
         return "hKev5ZZYIYWVJ7MOpaRCqA==";
     }
 
+    @Override
+    public String getPrivateKey() {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
 }

@@ -31,4 +31,10 @@ public interface OAuth2Service {
      * @return url 重定向URL
      */
     String getRedirectUrl(String redirectUri, String scope, String state);
+
+    /**
+     * 获取Access_token
+     */
+    String getAccessToken(String code, String state);
+
 }

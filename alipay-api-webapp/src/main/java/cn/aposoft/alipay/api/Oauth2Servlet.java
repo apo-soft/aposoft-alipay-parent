@@ -25,6 +25,8 @@ public class Oauth2Servlet extends HttpServlet {
     }
 
     /**
+     * 
+     * @see https://www.aposoft.cn/alipay/oauth2/access_token/?app_id=2016072800108741&source=alipay_wallet&scope=auth_base&state=1480202841737787&auth_code=9ee00896ab0b49c7a4a7bb985874VD78
      * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
      *      response)
      */
@@ -32,6 +34,14 @@ public class Oauth2Servlet extends HttpServlet {
         HttpUtils.printHeaders(request);
         HttpUtils.printParams(request);
 
+        String scope = request.getParameter("scope");
+        String state = request.getParameter("state");
+        String auth_code = request.getParameter("auth_code");
+        String source = request.getParameter("source");
+        String app_id = request.getParameter("app_id");
+        
+        
+        
         response.getWriter().append("Served at: ").append(request.getContextPath());
     }
 

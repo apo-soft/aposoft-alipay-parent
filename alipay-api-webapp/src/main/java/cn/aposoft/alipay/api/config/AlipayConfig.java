@@ -22,6 +22,12 @@ public interface AlipayConfig {
     public String getPublicKey();
 
     /**
+     * 私钥
+     * 
+     */
+    public String getPrivateKey();
+
+    /**
      * AES Key
      */
     public String getAesKey();
