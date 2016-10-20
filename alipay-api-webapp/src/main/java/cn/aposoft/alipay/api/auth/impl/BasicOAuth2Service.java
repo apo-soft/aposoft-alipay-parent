@@ -26,6 +26,7 @@ import cn.aposoft.util.URLEncoder;
  * 
  */
 public class BasicOAuth2Service implements OAuth2Service {
+
     // https://www.aposoft.cn/alipay/auth
 
     // https://openauth.alipay.com/oauth2/publicAppAuthorize.htm?
@@ -78,7 +79,6 @@ public class BasicOAuth2Service implements OAuth2Service {
     public AlipaySystemOauth2AccessToken getAccessToken(String code, String state) throws AlipayApiException {
         if (stateSet.containsKey(state)) {
             stateSet.remove(state);
-
         } else {
             // warn state not exist
         }
@@ -97,7 +97,7 @@ public class BasicOAuth2Service implements OAuth2Service {
         String access_token = "composeBcd261a4867d94837a701f92816f18X18";
         AlipayUserUserinfoShareResponse userinfoShareResponse = alipayClient.execute(request, access_token);
         System.out.println(userinfoShareResponse.getBody());
-        return null;
+        return userinfoShareResponse;
     }
 
 }

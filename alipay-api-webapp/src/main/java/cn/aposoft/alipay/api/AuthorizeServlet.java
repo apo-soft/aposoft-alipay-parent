@@ -1,8 +1,6 @@
 package cn.aposoft.alipay.api;
 
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.Map;
 
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
