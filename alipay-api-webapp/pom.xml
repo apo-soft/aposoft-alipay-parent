@@ -12,6 +12,9 @@
 	<artifactId>alipay-api-webapp</artifactId>
 	<name>alipay-api-webapp</name>
 	<url>http://maven.apache.org</url>
+	<build>
+		<finalName>alipay</finalName>
+	</build>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
