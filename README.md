@@ -13,3 +13,6 @@
         支付密码 111111
         账户余额 99999.00
         充值
+        
+   * https://www.aposoft.cn/alipay/auth?scope=auth_userinfo
+     https://www.aposoft.cn/alipay/auth?scope=auth_base
