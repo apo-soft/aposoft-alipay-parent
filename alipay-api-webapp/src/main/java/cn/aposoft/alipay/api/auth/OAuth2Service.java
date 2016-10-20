@@ -3,6 +3,8 @@
  */
 package cn.aposoft.alipay.api.auth;
 
+import com.alipay.api.AlipayApiException;
+
 /**
  * 用户授权服务
  * 
@@ -34,7 +36,19 @@ public interface OAuth2Service {
 
     /**
      * 获取Access_token
+     * 
+     * @throws AlipayApiException
      */
-    String getAccessToken(String code, String state);
+    AlipaySystemOauth2AccessToken getAccessToken(String code, String state) throws AlipayApiException;
+
+    /**
+     * 读取 用户基本信息
+     * 
+     * @param accessToken
+     *            授权token
+     * @return 用户信息对象
+     * @throws AlipayApiException
+     */
+    Object getUserInfo(String accessToken) throws AlipayApiException;
 
 }
