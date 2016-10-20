@@ -45,10 +45,23 @@ public class BasicAlipayConfig implements AlipayConfig {
         return "hKev5ZZYIYWVJ7MOpaRCqA==";
     }
 
+    /**
+     * 私有KEY
+     */
     @Override
     public String getPrivateKey() {
-        // TODO Auto-generated method stub
-        return null;
+        return "MIICdwIBADANBgkqhkiG9w0BAQEFAASCAmEwggJdAgEAAoGBAKzVv1+lyTmTtifo" + "gmZwMxJycuk1S2QNd4fkmnR20m1U+0YmumRCLwk2BPGedPceyt8NJifczh4LGIdw"
+                + "+Ah/60M+212vou0OzPMQSlntVKm68t/W0sMipVowt/bHUxd+QMLA2xcSFiouQQku"
+                + "aELJ7SKmzBch8qt9B+C/WYYJvFQHAgMBAAECgYB7myqQpypwSRmfFQQdauS7rqpL"
+                + "6teOKKtxvqZP4KLBmmNSWmQ3S7YD6mRCwMZ57cW9G9RL8fhfOCREySA6Q/HmKrH8"
+                + "tOhncl4nIH1SBUrAeudKTeQIBw/jGeoCmnDkdpkNGmUeQDJlLFHsJRKXW4vmzYTg"
+                + "nbnteXWSXXDH8SdbcQJBANsHRcYABNK9jF2yyi/EmEXg8kVNMXcf5j1l6Gt33mgM"
+                + "+4QoBxrGWDyS65cjE8YdnzuMkaKd96WZic9tPkI4TLsCQQDKAlkiSs31ZWV1sHF0"
+                + "zkqlPAWYLCs4aAuKpG4MkuyUOORq7YuHfe7bBKQGao0+PDyBLIvJRXULNEqTqjoz"
+                + "jmclAkAH1Je6/28stZgaFXVDBe1HukYPEjZtgtdxZH5NsUhjQeuQCvpOC79F0x7X"
+                + "FWr0j0SNFXZzcOBUrEuP/eDW7zpXAkEAutv9M1latpo6hejWqiOArOOekSqaOC0W"
+                + "MAL1wS/PIzSVJcvh+00kOvhJ+Z1qVZ1Gon5gN6fGIr0WFw2plLMu+QJBAIVRiwcx"
+                + "xbygg/dvpt16rFvbHfsbDZKsjpMU6Va/HQjSTsoHYuq9SvSIl84Z7KWKyoYbVQJT" + "2atOrD7l5ep4zno=";
     }
 
 }

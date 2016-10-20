@@ -14,6 +14,7 @@ import org.slf4j.LoggerFactory;
 
 import com.alibaba.fastjson.JSON;
 import com.alipay.api.AlipayApiException;
+import com.alipay.api.response.AlipayUserUserinfoShareResponse;
 
 import cn.aposoft.alipay.api.auth.AlipaySystemOauth2AccessToken;
 import cn.aposoft.alipay.api.auth.OAuth2Service;
@@ -64,7 +65,8 @@ public class Oauth2Servlet extends HttpServlet {
 
             logger.info(JSON.toJSONString(accessToken));
             if (AlipayOauth2Scope.auth_userinfo.getScope().equals(scope)) {
-                
+                AlipayUserUserinfoShareResponse userInfo = oauth2Service.getUserInfo(accessToken.getAccessToken());
+                logger.info(JSON.toJSONString(userInfo));
             }
             return;
         } catch (AlipayApiException e) {

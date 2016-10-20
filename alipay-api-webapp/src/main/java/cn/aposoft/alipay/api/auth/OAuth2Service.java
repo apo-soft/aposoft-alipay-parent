@@ -4,6 +4,7 @@
 package cn.aposoft.alipay.api.auth;
 
 import com.alipay.api.AlipayApiException;
+import com.alipay.api.response.AlipayUserUserinfoShareResponse;
 
 /**
  * 用户授权服务
@@ -49,6 +50,6 @@ public interface OAuth2Service {
      * @return 用户信息对象
      * @throws AlipayApiException
      */
-    Object getUserInfo(String accessToken) throws AlipayApiException;
+    AlipayUserUserinfoShareResponse getUserInfo(String accessToken) throws AlipayApiException;
 
 }
