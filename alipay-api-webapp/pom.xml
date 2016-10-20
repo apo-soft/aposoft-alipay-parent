@@ -7,6 +7,7 @@
 		<groupId>cn.aposoft.alipay</groupId>
 		<artifactId>aposoft-aplipay-parent</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
+
 	</parent>
 	<artifactId>alipay-api-webapp</artifactId>
 	<name>alipay-api-webapp</name>
@@ -54,6 +55,10 @@
 		</dependency>
 		<dependency>
 			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-api</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-log4j12</artifactId>
 			<scope>test</scope>
 		</dependency>
@@ -68,4 +73,5 @@
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
+	<packaging>war</packaging>
 </project>
