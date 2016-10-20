@@ -8,6 +8,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import cn.aposoft.util.HttpUtils;
+
 /**
  * Servlet implementation class Oauth2Servlet
  */
@@ -27,6 +29,9 @@ public class Oauth2Servlet extends HttpServlet {
      *      response)
      */
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        HttpUtils.printHeaders(request);
+        HttpUtils.printParams(request);
+
         response.getWriter().append("Served at: ").append(request.getContextPath());
     }
 

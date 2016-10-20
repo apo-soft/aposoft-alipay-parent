@@ -1,6 +1,8 @@
 package cn.aposoft.alipay.api;
 
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
@@ -8,6 +10,8 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import org.apache.http.HttpStatus;
 
 import cn.aposoft.alipay.api.auth.OAuth2Service;
 import cn.aposoft.alipay.api.auth.impl.BasicOAuth2Service;
@@ -42,9 +46,13 @@ public class AuthorizeServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         String scope = request.getParameter("scope");
+        if (!AlipayOauth2Scope.auth_base.getScope().equals(scope) && !AlipayOauth2Scope.auth_userinfo.getScope().equals(scope)) {
+            response.setStatus(HttpStatus.SC_NOT_FOUND);
+            return;
+        }
 
         String redirectUrl = oauth2Service.getRedirectUrl(UrlConstant.OAUTH2_CALLBACK_URL, scope);
-        // 重定向
+        // 重定向:alipay oauth2
         response.sendRedirect(redirectUrl);
     }
 
