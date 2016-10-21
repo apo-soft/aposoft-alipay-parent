@@ -31,4 +31,11 @@ public interface AlipayConfig {
      * AES Key
      */
     public String getAesKey();
+    /**
+     * 支付宝的商户公钥
+     * MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDIgHnOn7LLILlKETd6BFRJ0GqgS2Y3mn1wMQmyh9zEyWlz5p1zrahRahbXAfCfSqshSNfqOmAQzSHRVjCqjsAw1jyqrXaPdKBmr90DIpIxmIyKXv4GGAkPyJ/6FTFY99uhpiq0qadD/uSzQsefWo0aTvP/65zi3eof7TcZ32oWpwIDAQAB
+     * @return
+     */
+    public String getAlipayPublicKey();
+
 }

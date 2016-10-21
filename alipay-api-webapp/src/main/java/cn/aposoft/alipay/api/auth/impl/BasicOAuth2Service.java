@@ -8,19 +8,23 @@ import java.util.concurrent.ConcurrentMap;
 
 import org.apache.commons.lang.RandomStringUtils;
 
+import com.alibaba.fastjson.JSON;
 import com.alipay.api.AlipayApiException;
 import com.alipay.api.AlipayClient;
-import com.alipay.api.DefaultAlipayClient;
+import com.alipay.api.request.AlipaySystemOauthTokenRequest;
 import com.alipay.api.request.AlipayUserUserinfoShareRequest;
+import com.alipay.api.response.AlipaySystemOauthTokenResponse;
 import com.alipay.api.response.AlipayUserUserinfoShareResponse;
 
-import cn.aposoft.alipay.api.auth.AlipaySystemOauth2AccessToken;
+import cn.aposoft.alipay.api.auth.GrantType;
 import cn.aposoft.alipay.api.auth.OAuth2Service;
 import cn.aposoft.alipay.api.config.impl.AlipayConfigFactory;
-import cn.aposoft.constant.Lexical;
+import cn.aposoft.alipay.api.util.AlipayClientFactory;
 import cn.aposoft.util.URLEncoder;
 
 /**
+ * 
+ * @see https://doc.open.alipay.com/docs/doc.htm?spm=a219a.7629140.0.0.Z6WEYA&treeId=220&articleId=105337&docType=1
  * @author LiuJian
  * @date 2016年10月20日
  * 
@@ -34,9 +38,11 @@ public class BasicOAuth2Service implements OAuth2Service {
     // &redirect_uri=https%3A%2F%2Fwww.aposoft.cn%2Falipay%2Foauth2%2Faccess_token%2F
     public static final String OAUTH2_URL_TEMPLATE = "app_id=%s&scope=%s&state=%s&redirect_uri=%s";
     private final ConcurrentMap<String, Object> stateSet = new ConcurrentHashMap<>();
-
-    AlipayClient alipayClient = new DefaultAlipayClient("https://openapi.alipay.com/gateway.do", AlipayConfigFactory.getConfig().getAppId(),
-            AlipayConfigFactory.getConfig().getPrivateKey(), Lexical.JSON, Lexical.UTF8, AlipayConfigFactory.getConfig().getPublicKey());
+    // 测试环境
+    // https://openapi.alipaydev.com/gateway.do
+    // 生产环境
+    // https://openapi.alipay.com/gateway.do
+    private AlipayClient alipayClient = AlipayClientFactory.getClient();
 
     @Override
     public String getRedirectUrl(String redirectUri, String scope) {
@@ -74,18 +80,41 @@ public class BasicOAuth2Service implements OAuth2Service {
         } while (isSet);
     }
 
+    /**
+     * 
+     */
     @Override
-    public AlipaySystemOauth2AccessToken getAccessToken(String code, String state) throws AlipayApiException {
+    public AlipaySystemOauthTokenResponse getAccessToken(String refresh_token) throws AlipayApiException {
+        // BasicAlipaySystemOauthToken request = new
+        // BasicAlipaySystemOauthToken();
+        AlipaySystemOauthTokenRequest request = new AlipaySystemOauthTokenRequest();
+        request.setRefreshToken(refresh_token);
+        request.setGrantType(GrantType.authorization_code.getKey());
+        // BaseAlipaySystemOauth2AccessToken
+
+        System.out.println(JSON.toJSONString(request));
+        AlipaySystemOauthTokenResponse oauthTokenResponse = alipayClient.execute(request);
+        System.out.println(oauthTokenResponse.getAccessToken());
+        return oauthTokenResponse;
+    }
+
+    @Override
+    public AlipaySystemOauthTokenResponse getAccessToken(String code, String state) throws AlipayApiException {
         if (stateSet.containsKey(state)) {
             stateSet.remove(state);
         } else {
             // warn state not exist
         }
 
-        BasicAlipaySystemOauthToken request = new BasicAlipaySystemOauthToken();
-        request.setCode("code");
+        // BasicAlipaySystemOauthToken request = new
+        // BasicAlipaySystemOauthToken();
+        AlipaySystemOauthTokenRequest request = new AlipaySystemOauthTokenRequest();
+        request.setCode(code);
         request.setGrantType("authorization_code");
-        BaseAlipaySystemOauth2AccessToken oauthTokenResponse = alipayClient.execute(request);
+        // BaseAlipaySystemOauth2AccessToken
+
+        System.out.println(JSON.toJSONString(request));
+        AlipaySystemOauthTokenResponse oauthTokenResponse = alipayClient.execute(request);
         System.out.println(oauthTokenResponse.getAccessToken());
         return oauthTokenResponse;
     }

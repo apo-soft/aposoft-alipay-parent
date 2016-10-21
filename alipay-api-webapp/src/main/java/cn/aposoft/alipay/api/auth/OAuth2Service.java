@@ -4,6 +4,7 @@
 package cn.aposoft.alipay.api.auth;
 
 import com.alipay.api.AlipayApiException;
+import com.alipay.api.response.AlipaySystemOauthTokenResponse;
 import com.alipay.api.response.AlipayUserUserinfoShareResponse;
 
 /**
@@ -36,11 +37,20 @@ public interface OAuth2Service {
     String getRedirectUrl(String redirectUri, String scope, String state);
 
     /**
-     * 获取Access_token
+     * 获取Access_token 授权方式:authorization_code
      * 
      * @throws AlipayApiException
      */
-    AlipaySystemOauth2AccessToken getAccessToken(String code, String state) throws AlipayApiException;
+    AlipaySystemOauthTokenResponse getAccessToken(String code, String state) throws AlipayApiException;
+
+    /**
+     * 获取Access_token 授权方式:refresh_token
+     * 
+     * @param refresh_token
+     *            使用refresh_token 获取access_token
+     * @throws AlipayApiException
+     */
+    AlipaySystemOauthTokenResponse getAccessToken(String refresh_token) throws AlipayApiException;
 
     /**
      * 读取 用户基本信息

@@ -13,6 +13,9 @@ import java.nio.charset.Charset;
  * 
  */
 public class Lexical {
+
+    public static final String GBK = "GBK";
+
     /**
      * UTF-8
      */
