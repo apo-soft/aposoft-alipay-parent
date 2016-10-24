@@ -17,7 +17,6 @@ import com.alipay.api.AlipayApiException;
 import com.alipay.api.response.AlipaySystemOauthTokenResponse;
 import com.alipay.api.response.AlipayUserUserinfoShareResponse;
 
-import cn.aposoft.alipay.api.auth.AlipaySystemOauth2AccessToken;
 import cn.aposoft.alipay.api.auth.OAuth2Service;
 import cn.aposoft.alipay.api.auth.impl.BasicOAuth2Service;
 import cn.aposoft.alipay.api.config.impl.AlipayConfigFactory;
